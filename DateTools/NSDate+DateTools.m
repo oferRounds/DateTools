@@ -1729,6 +1729,11 @@ static NSCalendar *implicitCalendar = nil;
 + (void)setDefaultCalendarIdentifier:(NSString *)identifier {
     defaultCalendarIdentifier = [identifier copy];
     implicitCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:defaultCalendarIdentifier ?: NSCalendarIdentifierGregorian];
+    implicitCalendar.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+}
+
++ (void)setDefaultCalendarTimezone:(NSTimeZone *)timezone {
+  implicitCalendar.timeZone = timezone;
 }
 
 /**
