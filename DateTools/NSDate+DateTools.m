@@ -154,7 +154,7 @@ static NSCalendar *implicitCalendar = nil;
 
 - (NSString *)timeAgoSinceDate:(NSDate *)date format:(DateAgoFormat)format {
 
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
 
@@ -438,7 +438,7 @@ static NSCalendar *implicitCalendar = nil;
  *  @return NSInteger
  */
 - (NSInteger)daysInMonth{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSRange days = [calendar rangeOfUnit:NSCalendarUnitDay
                                   inUnit:NSCalendarUnitMonth
                                  forDate:self];
@@ -490,7 +490,7 @@ static NSCalendar *implicitCalendar = nil;
 }
 
 - (BOOL)isToday {
-	NSCalendar *cal = [NSCalendar currentCalendar];
+	NSCalendar *cal = [[self class] implicitCalendar];
 	NSDateComponents *components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:[NSDate date]];
 	NSDate *today = [cal dateFromComponents:components];
 	components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:self];
@@ -500,7 +500,7 @@ static NSCalendar *implicitCalendar = nil;
 }
 
 - (BOOL)isTomorrow {
-	NSCalendar *cal = [NSCalendar currentCalendar];
+	NSCalendar *cal = [[self class] implicitCalendar];
 	NSDateComponents *components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:[[NSDate date] dateByAddingDays:1]];
 	NSDate *tomorrow = [cal dateFromComponents:components];
 	components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:self];
@@ -510,7 +510,7 @@ static NSCalendar *implicitCalendar = nil;
 }
 
 -(BOOL)isYesterday{
-    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSCalendar *cal = [[self class] implicitCalendar];
 	NSDateComponents *components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:[[NSDate date] dateBySubtractingDays:1]];
 	NSDate *tomorrow = [cal dateFromComponents:components];
 	components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:self];
@@ -520,7 +520,7 @@ static NSCalendar *implicitCalendar = nil;
 }
 
 - (BOOL)isWeekend {
-    NSCalendar *calendar            = [NSCalendar currentCalendar];
+    NSCalendar *calendar            = [[self class] implicitCalendar];
     NSRange weekdayRange            = [calendar maximumRangeOfUnit:NSCalendarUnitWeekday];
     NSDateComponents *components    = [calendar components:NSCalendarUnitWeekday
                                                   fromDate:self];
@@ -554,7 +554,7 @@ static NSCalendar *implicitCalendar = nil;
  */
 + (BOOL)isSameDay:(NSDate *)date asDate:(NSDate *)compareDate
 {
-    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSCalendar *cal = [[self class] implicitCalendar];
     
     NSDateComponents *components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:date];
     NSDate *dateOne = [cal dateFromComponents:components];
