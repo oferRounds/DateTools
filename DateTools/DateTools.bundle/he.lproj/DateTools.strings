@@ -25,11 +25,15 @@
 /* No comment provided by engineer. */
 "An hour ago" = "לפני שעה";
 
+"2 hours ago" = "לפני שעתיים";
+
 /* No comment provided by engineer. */
 "Just now" = "ממש עכשיו";
 
 /* No comment provided by engineer. */
 "Last month" = "בחודש שעבר";
+
+"2 months ago" = "לפני חודשיים";
 
 /* No comment provided by engineer. */
 "Last week" = "בשבוע שעבר";
@@ -37,8 +41,12 @@
 /* No comment provided by engineer. */
 "Last year" = "בשנה שעברה";
 
+"2 years ago" = "לפני שנתיים";
+
 /* No comment provided by engineer. */
 "Yesterday" = "אתמול";
+
+"2 days ago" = "שלשום";
 
 /* No comment provided by engineer. */
 "1 year ago" = "לפני שנה";
@@ -49,8 +57,10 @@
 /* No comment provided by engineer. */
 "1 week ago" = "לפני שבוע";
 
+"2 weeks ago" = "לפני שבועיים";
+
 /* No comment provided by engineer. */
-"1 day ago" = "לפני יום";
+"1 day ago" = "אתמול";
 
 /* No comment provided by engineer. */
 "This morning" = "הבוקר";

@@ -198,12 +198,15 @@ static NSCalendar *implicitCalendar = nil;
     BOOL isShort = format == DateAgoShort;
     BOOL isNumericDate = format == DateAgoLongUsingNumericDates || format == DateAgoLongUsingNumericDatesAndTimes;
     BOOL isNumericTime = format == DateAgoLongUsingNumericTimes || format == DateAgoLongUsingNumericDatesAndTimes;
-    BOOL isWeek =  format == DateAgoWeek;
-
+    BOOL isHebrew = [[NSBundle mainBundle].preferredLocalizations.firstObject hasPrefix:@"he"];
+    BOOL isWeek = format == DateAgoWeek;
+    
     switch (valueType) {
         case YearsAgo:
             if (isShort) {
                 return [self logicLocalizedStringFromFormat:@"%%d%@y" withValue:value];
+            } else if (value == 2 && isHebrew) {
+                return DateToolsLocalizedStrings(@"2 years ago");
             } else if (value >= 2) {
                 return [self logicLocalizedStringFromFormat:@"%%d %@years ago" withValue:value];
             } else if (isNumericDate) {
@@ -214,6 +217,8 @@ static NSCalendar *implicitCalendar = nil;
         case MonthsAgo:
             if (isShort) {
                 return [self logicLocalizedStringFromFormat:@"%%d%@M" withValue:value];
+            } else if (value == 2 && isHebrew) {
+                return DateToolsLocalizedStrings(@"2 months ago");
             } else if (value >= 2) {
                 return [self logicLocalizedStringFromFormat:@"%%d %@months ago" withValue:value];
             } else if (isNumericDate) {
@@ -224,6 +229,8 @@ static NSCalendar *implicitCalendar = nil;
         case WeeksAgo:
             if (isShort) {
                 return [self logicLocalizedStringFromFormat:@"%%d%@w" withValue:value];
+            } else if (value == 2 && isHebrew) {
+                return DateToolsLocalizedStrings(@"2 weeks ago");
             } else if (value >= 2) {
                 return [self logicLocalizedStringFromFormat:@"%%d %@weeks ago" withValue:value];
             } else if (isNumericDate) {
@@ -234,6 +241,8 @@ static NSCalendar *implicitCalendar = nil;
         case DaysAgo:
             if (isShort) {
                 return [self logicLocalizedStringFromFormat:@"%%d%@d" withValue:value];
+            } else if (value == 2 && isHebrew) {
+                return DateToolsLocalizedStrings(@"2 days ago");
             } else if (value >= 2) {
                 if (isWeek && value <= 7) {
                     NSDateFormatter *dayDateFormatter = [[NSDateFormatter alloc]init];
@@ -252,6 +261,8 @@ static NSCalendar *implicitCalendar = nil;
         case HoursAgo:
             if (isShort) {
                 return [self logicLocalizedStringFromFormat:@"%%d%@h" withValue:value];
+            } else if (value == 2 && isHebrew) {
+                return DateToolsLocalizedStrings(@"2 hours ago");
             } else if (value >= 2) {
                 return [self logicLocalizedStringFromFormat:@"%%d %@hours ago" withValue:value];
             } else if (isNumericTime) {
