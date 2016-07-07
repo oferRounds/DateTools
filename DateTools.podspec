@@ -1,13 +1,21 @@
-Pod::Spec.new do |spec|
-  spec.name         = 'DateTools'
-  spec.version      = '1.7.0'
-  spec.license      = { :type => 'MIT' }
-  spec.homepage     = 'https://github.com/VincentSit/DateTools'
-  spec.summary      = 'DateTools was written to streamline date and time handling in Objective-C.'
-  spec.source       = { :git => "https://github.com/VincentSit/DateTools.git", :tag => "v#{s.version.to_s}"  }
-  spec.source_files = 'DateTools'
-  spec.resources    = 'DateTools/DateTools.bundl
-  spec.ios.platform = :ios, '7.0'
-  spec.osx.platform = :iox, '10.7'
-  spec.requires_arc = true
+Pod::Spec.new do |s|
+  s.name         = 'DateTools'
+  s.version      = '1.7.0'
+  s.summary      = 'Dates and time made easy in Objective-C'
+  s.homepage     = 'https://github.com/MatthewYork/DateTools'
+
+  s.description  = 'DateTools was written to streamline date and time handling in Objective-C.'
+
+  s.license      = { :type => 'MIT', :file => 'LICENSE' }
+  s.author       = { "Matthew York" => "my3681@gmail.com" }
+
+  s.source       = { :git => "https://github.com/VincentSit/DateTools.git",
+                     :tag => "v#{s.version.to_s}" }
+
+  s.ios.platform = :ios, '7.0'
+  s.osx.platform = :iox, '10.7'
+  s.requires_arc = true
+
+  s.source_files = 'DateTools'
+  s.resources    = 'DateTools/DateTools.bundle'
 end
